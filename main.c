@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <complex.h>
 
 void main( void ){
-    COMPLEX arr[13];
+	COMPLEX arr[13];
 	COMPLEX result;
-
 	arr[0] = CreateComplex(2, -6);
 	arr[1] = CreateComplex(0, 8);
 	arr[2] = CreateComplex(12,0);
@@ -40,8 +40,8 @@ void main( void ){
 
 	result = MultiplyComplex(&arr[9], &arr[10]);
 	PrintComplex(&result);
-
+	
 	result = DivideComplex(&arr[11], &arr[12]);
-
+	
 	getchar();
 }
