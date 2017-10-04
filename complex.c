@@ -3,7 +3,13 @@
 #include <assert.h>
 #include <complex.h>
 
-/*  Creation  */
+/*...........................................................................
+    Name:     CreateComplex.
+    Purpose:  Creates Struct in the dynamic memory.
+    Entry:    (double real, double imaginary) <real> refers to the real number of a complex'i',
+                                              <imaginary> refers to imaginary no. of complex 'j'.
+    Exit:     Returns pointer to COMPLEX that reserved in the dynamic memory.
+*/
 COMPLEX CreateComplex(double real, double imaginary){
     COMPLEX * New_Complex = (COMPLEX *) malloc(sizeof(COMPLEX));
     New_Complex->real = real;
@@ -11,12 +17,23 @@ COMPLEX CreateComplex(double real, double imaginary){
     return *New_Complex;
 }
 
-/* Destruction */
+/*...........................................................................
+    Name:     DestroyComplex.
+    Purpose:  Delete the Struct in the dynamic memory.
+    Entry:    (CPTR COMPLEX) Pointer to complex,
+    Exit:     No parameters.
+*/
 void DestroyComplex(CPTR COMPLEX){
     free(COMPLEX);
 }
 
-/* Addition */
+/*...........................................................................
+    Name:     AddComplex.
+    Purpose:  Function used to ADD two complex numbers.
+    Entry:    (CPTR first, CPTR second) <first> Pointer to the first complex number,
+                                        <second> Pointer to the second complex number,
+    Exit:     Returns pointer to COMPLEX (The result of the ADDITION).
+*/
 COMPLEX AddComplex(CPTR first, CPTR second){
     COMPLEX Add_Complex;
     Add_Complex.real = first->real + second->real;
@@ -24,7 +41,13 @@ COMPLEX AddComplex(CPTR first, CPTR second){
     return Add_Complex;
 }
 
-/* Subtraction */
+/*...........................................................................
+    Name:     SubtractComplex.
+    Purpose:  Function used to SUBTRACT two complex numbers.
+    Entry:    (CPTR first, CPTR second) <first> Pointer to the first complex number,
+                                        <second> Pointer to the second complex number,
+    Exit:     Returns pointer to COMPLEX (The result of the SUBTRACTION).
+*/
 COMPLEX SubtractComplex(CPTR first, CPTR second){
     COMPLEX Sub_Complex;
     Sub_Complex.real = first->real - second->real;
@@ -32,7 +55,13 @@ COMPLEX SubtractComplex(CPTR first, CPTR second){
     return Sub_Complex;
 }
 
-/* Multiplication */
+/*...........................................................................
+    Name:     MultiplyComplex.
+    Purpose:  Function used to Multiply two complex numbers.
+    Entry:    (CPTR first, CPTR second) <first> Pointer to the first complex number,
+                                        <second> Pointer to the second complex number,
+    Exit:     Returns pointer to COMPLEX (The result of the Multiplication).
+*/
 COMPLEX MultiplyComplex(CPTR first, CPTR second){
     COMPLEX Mul_Complex;
     Mul_Complex.real = first->real*second->real - first->imaginary*second->imaginary;
@@ -40,7 +69,12 @@ COMPLEX MultiplyComplex(CPTR first, CPTR second){
     return Mul_Complex;
 }
 
-/* Conjugate */
+/*...........................................................................
+    Name:     ConjugateComplex.
+    Purpose:  Function used to Multiply two complex numbers.
+    Entry:    (CPTR complex) <complex> Pointer to a complex number,
+    Exit:     Returns pointer to COMPLEX (The result of the Conjugation).
+*/
 COMPLEX ConjugateComplex(CPTR complex){
     COMPLEX Conj_Complex;
     Conj_Complex.imaginary = complex->imaginary * (-1);
@@ -48,8 +82,14 @@ COMPLEX ConjugateComplex(CPTR complex){
     return Conj_Complex;
 }
 
-/* Division */ 
-COMPLEX DivideComplex(CPTR first, CPTR second){
+/*...........................................................................
+    Name:     DivideComplex.
+    Purpose:  Function used to Multiply two complex numbers.
+    Entry:    (CPTR first, CPTR second) <first> Pointer to the first complex number,
+                                        <second> Pointer to the second complex number,
+    Exit:     No parameters.
+*/
+void DivideComplex(CPTR first, CPTR second){
     int temp1, temp2, temp3;
     if ((first->real == 0) && (second->imaginary == 0))
         printf("Division by 0 + 0i is not allowed.");
@@ -87,7 +127,12 @@ COMPLEX DivideComplex(CPTR first, CPTR second){
     }
 }
 
-/* Printing */ 
+/*...........................................................................
+    Name:     PrintComplex.
+    Purpose:  Function used to print a complex numbers.
+    Entry:    (CPTR complex) <complex> Pointer to a complex number,
+    Exit:     No parameters.
+*/
 void PrintComplex(CPTR complex){
     printf("Complex Real %lf Complex Imaginary %lf\n", complex->real, complex->imaginary);
 }
