@@ -3,21 +3,20 @@
 #include <assert.h>
 #include <complex.h>
 
-/* Creation */
-COMPLEX * New_Complex;
+/*  Creation  */
 COMPLEX CreateComplex(double real, double imaginary){
-    New_Complex = (COMPLEX *) malloc(sizeof(COMPLEX));
+    COMPLEX * New_Complex = (COMPLEX *) malloc(sizeof(COMPLEX));
     New_Complex->real = real;
     New_Complex->imaginary = imaginary;
     return *New_Complex;
 }
 
-/* Destruction */ 
+/* Destruction */
 void DestroyComplex(CPTR COMPLEX){
     free(COMPLEX);
 }
 
-/* Addition */ 
+/* Addition */
 COMPLEX AddComplex(CPTR first, CPTR second){
     COMPLEX Add_Complex;
     Add_Complex.real = first->real + second->real;
@@ -25,7 +24,7 @@ COMPLEX AddComplex(CPTR first, CPTR second){
     return Add_Complex;
 }
 
-/* Subtraction */ 
+/* Subtraction */
 COMPLEX SubtractComplex(CPTR first, CPTR second){
     COMPLEX Sub_Complex;
     Sub_Complex.real = first->real - second->real;
@@ -33,7 +32,7 @@ COMPLEX SubtractComplex(CPTR first, CPTR second){
     return Sub_Complex;
 }
 
-/* Multiplication */ 
+/* Multiplication */
 COMPLEX MultiplyComplex(CPTR first, CPTR second){
     COMPLEX Mul_Complex;
     Mul_Complex.real = first->real*second->real - first->imaginary*second->imaginary;
@@ -41,8 +40,7 @@ COMPLEX MultiplyComplex(CPTR first, CPTR second){
     return Mul_Complex;
 }
 
-/* Conjugate */ 
-
+/* Conjugate */
 COMPLEX ConjugateComplex(CPTR complex){
     COMPLEX Conj_Complex;
     Conj_Complex.imaginary = complex->imaginary * (-1);
@@ -53,39 +51,38 @@ COMPLEX ConjugateComplex(CPTR complex){
 /* Division */ 
 COMPLEX DivideComplex(CPTR first, CPTR second){
     int temp1, temp2, temp3;
-    if ( first->real == 0 && second->imaginary == 0 )
+    if ((first->real == 0) && (second->imaginary == 0))
         printf("Division by 0 + 0i is not allowed.");
     else
         temp1 = first->real*second->real + first->imaginary*second->imaginary;
         temp2 = first->imaginary*second->real - first->real*second->imaginary;
         temp3 = second->imaginary*second->imaginary + second->imaginary*second->imaginary;
         
-    if ( (temp1%temp3 == 0) && (temp2%temp3 == 0) )
-        {
-          if ( temp2/temp3 >= 0)
+    if((temp1%temp3 == 0) && (temp2%temp3 == 0))
+    {
+        if ( temp2/temp3 >= 0)
             printf("Division of two complex number8s = %d + %di ",temp1/temp3,temp2/temp3);
-          else
-            printf("Division of two complex number7s = %d %di ",temp1/temp3,temp2/temp3);
-        }
-        else if ( (temp1%temp3 == 0) && (temp2%temp3 != 0) )
-        {
-          if ( temp2/temp3 >= 0)
-            printf("Division of two complex number6s = %d + %d%di ",temp1/temp3,temp2,temp3);
-          else
-            printf("Division of two complex number5s = %d %d%di ",temp1/temp3,temp2,temp3);
-        }
-        else if ( temp1%temp3 != 0 && temp2%temp3 == 0 )
-        {
-          if ( temp2/temp3 >= 0)
-            printf("Division of two complex number4s = %d%d + %di ",temp1,temp3,temp2/temp3);
-          else
-            printf("Division of two complex number3s = %d %d%ddi ",temp1,temp3,temp2/temp3);
-        }
         else
+            printf("Division of two complex number7s = %d %di ",temp1/temp3,temp2/temp3);
+    }
+    else if ((temp1%temp3 == 0) && (temp2%temp3 != 0)){
+        if (temp2/temp3 >= 0)
+            printf("Division of two complex number6s = %d + %d%di ",temp1/temp3,temp2,temp3);
+    else
+        printf("Division of two complex number5s = %d %d%di ",temp1/temp3,temp2,temp3);
+    }
+    else if ( temp1%temp3 != 0 && temp2%temp3 == 0 )
+    {
+        if (temp2/temp3 >= 0)
+            printf("Division of two complex number4s = %d%d + %di ",temp1,temp3,temp2/temp3);
+        else
+            printf("Division of two complex number3s = %d %d%ddi ",temp1,temp3,temp2/temp3);
+    }
+    else
         {
-          if ( temp2/temp3 >= 0)
+        if ( temp2/temp3 >= 0)
             printf("Division of two complex number2s = %d%d + %d%di ",temp1,temp3,temp2,temp3);
-          else
+        else
             printf("Division of two complex numbers1 = %d%d %d%di ",temp1,temp3,temp2,temp3);
     }
 }
