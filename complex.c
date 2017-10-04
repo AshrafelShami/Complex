@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <complex.h>
 
 /* Creation */
 COMPLEX * New_Complex;
@@ -88,8 +89,6 @@ COMPLEX DivideComplex(CPTR first, CPTR second){
             printf("Division of two complex numbers1 = %d%d %d%di ",temp1,temp3,temp2,temp3);
     }
 }
-
-
 
 /* Printing */ 
 void PrintComplex(CPTR complex){
